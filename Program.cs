@@ -1,6 +1,12 @@
 ﻿using UniversityDbConsole.Data;
 using UniversityDbConsole.UnitOfWork;
 
+if (args.Any(x => x.Equals("--nosql", StringComparison.OrdinalIgnoreCase)))
+{
+    await UniversityDbConsole.NoSql.NoSqlMenu.RunAsync();
+    return;
+}
+
 using var context = new AppDbContext();
 using var unitOfWork = new UnitOfWork(context);
 
